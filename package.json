@@ -1,0 +1,32 @@
+{
+  "name": "revornix",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "main": "dist/revornix.cjs.js",
+  "module": "dist/revornix.es.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    "import": "./dist/revornix.es.js",
+    "require": "./dist/revornix.cjs.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "vite build"
+  },
+  "keywords": [
+    "revornix"
+  ],
+  "author": "Kinda Hall",
+  "license": "MIT",
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.0.6",
+    "vite-plugin-dts": "^4.5.4"
+  }
+}
