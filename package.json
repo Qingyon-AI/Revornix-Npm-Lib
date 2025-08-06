@@ -7,8 +7,11 @@
   "module": "dist/revornix.es.js",
   "types": "dist/types/index.d.ts",
   "exports": {
-    "import": "./dist/revornix.es.js",
-    "require": "./dist/revornix.cjs.js"
+    ".": {
+      "import": "./dist/revornix.es.js",
+      "require": "./dist/revornix.cjs.js",
+      "types": "./dist/types/index.d.ts"
+    }
   },
   "files": [
     "dist",
