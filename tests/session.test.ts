@@ -42,3 +42,25 @@ conditionalTest('createFileDocument', async () => {
     })
     expect(res.status).toBe(200)
 })
+
+conditionalTest('createDocumentLabel', async () => {
+    const session = new Session(urlPrefix!, apiKey!)
+    const res = await session.createDocumentLabel({
+        name: "test"
+    })
+    expect(res.status).toBe(200)
+})
+
+conditionalTest('createSectionLabel', async () => {
+    const session = new Session(urlPrefix!, apiKey!)
+    const res = await session.createSectionLabel({
+        name: "test"
+    })
+    expect(res.status).toBe(200)
+})
+
+conditionalTest('getMineAllDocumentLabels', async () => {
+    const session = new Session(urlPrefix!, apiKey!)
+    const res = await session.getMineAllDocumentLabels()
+    expect(res.status).toBe(200)
+})

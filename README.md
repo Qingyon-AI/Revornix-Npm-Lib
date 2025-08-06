@@ -2,6 +2,8 @@
 
 The nodejs package for Revornix API.
 
+📕 API Document: [revornix/api](https://revornix.com/en/docs/features/api)
+
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Qingyon-AI/Revornix)
 
 ## Full Docker App
@@ -23,6 +25,39 @@ pnpm add revornix
 ```
 
 ## Usage
+
+### Create Document Label
+
+```ts
+import { Session } from 'revornix';
+
+const revornixSession = new Session('YOUR_API_PREFIX', 'YOUR_API_KEY');
+const response = await session.createDocumentLabel({
+    name: "test"
+})
+
+console.log(response);
+```
+
+### Create Section Label
+
+```ts
+const revornixSession = new Session('YOUR_API_PREFIX', 'YOUR_API_KEY');
+const response = await revornixSession.createSectionLabel({
+    name: "test"
+})
+
+console.log(response);
+```
+
+### Get Mine All Document Labels
+
+```ts
+const revornixSession = new Session('YOUR_API_PREFIX', 'YOUR_API_KEY');
+const response = await session.getMineAllDocumentLabels()
+
+console.log(response);
+```
 
 ### Create Quick Note Document
 
