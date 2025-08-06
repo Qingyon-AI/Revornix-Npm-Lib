@@ -1,11 +1,15 @@
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+import tsconfigPaths from 'vite-tsconfig-paths';
 import path from 'path'
 
 export default defineConfig({
-    plugins: [dts({
-        outDir: 'dist/types',
-    })],
+    plugins: [
+        tsconfigPaths(),
+        dts({
+            outDir: 'dist/types',
+            insertTypesEntry: true,
+        })],
     build: {
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
