@@ -1,6 +1,6 @@
 {
   "name": "revornix",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "type": "module",
   "main": "dist/revornix.cjs.js",
@@ -8,14 +8,15 @@
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/revornix.es.js",
-      "require": "./dist/revornix.cjs.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/revornix.cjs.js"
     }
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "package.json"
   ],
   "scripts": {
     "clean": "rm -rf dist",
