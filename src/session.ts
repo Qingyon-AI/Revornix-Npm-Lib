@@ -72,4 +72,5 @@ export class Session {
         const res = this.axiosInstance.post(`${api.createDocument}`, { ...data, category, from_plat: this.fromPlat })
         return res
     }
+
 }

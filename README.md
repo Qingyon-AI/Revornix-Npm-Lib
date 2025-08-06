@@ -1,8 +1,12 @@
-# Revornix
+# Revornix-Npm-Lib
 
 The nodejs package for Revornix API.
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Qingyon-AI/Revornix)
+
+## Full Docker App
+
+https://github.com/Qingyon-AI/Revornix
 
 ## Introduction
 
