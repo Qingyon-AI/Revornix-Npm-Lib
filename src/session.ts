@@ -65,6 +65,16 @@ interface CreateSectionResponse {
     id: number
 }
 
+interface BaseSectionInfo {
+    id: number
+    title: string
+    description: string
+}
+
+interface AllMySectionsResponse {
+    data: BaseSectionInfo[]
+}
+
 export class Session {
 
     private apiKey: string;
@@ -123,7 +133,7 @@ export class Session {
         return res
     }
 
-    public getMineAllSection(): Promise<AxiosResponse<LabelListResponse>> {
+    public getMineAllSection(): Promise<AxiosResponse<AllMySectionsResponse>> {
         const res = this.axiosInstance.post(`${api.getMineAllSection}`)
         return res
     }
