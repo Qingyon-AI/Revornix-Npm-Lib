@@ -123,4 +123,9 @@ export class Session {
         return res
     }
 
+    public getMineAllSection(): Promise<AxiosResponse<LabelListResponse>> {
+        const res = this.axiosInstance.post(`${api.getMineAllSection}`)
+        return res
+    }
+
 }

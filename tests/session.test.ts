@@ -75,3 +75,9 @@ conditionalTest('createSection', async () => {
     })
     expect(res.status).toBe(200)
 })
+
+conditionalTest('getMineAllSections', async () => {
+    const session = new Session(urlPrefix!, apiKey!)
+    const res = await session.getMineAllSection()
+    expect(res.status).toBe(200)
+})
