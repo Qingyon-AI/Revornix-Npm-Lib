@@ -53,6 +53,18 @@ interface CreateLabelResponse {
     name: string
 }
 
+interface CreateSectionRequest {
+    title: string
+    description: string
+    public: boolean
+    cover_id?: number
+    labels: number[]
+}
+
+interface CreateSectionResponse {
+    id: number
+}
+
 export class Session {
 
     private apiKey: string;
@@ -103,6 +115,11 @@ export class Session {
 
     public createSectionLabel(data: LabelAddRequest): Promise<AxiosResponse<CreateLabelResponse>> {
         const res = this.axiosInstance.post(`${api.createSesionLabel}`, { ...data })
+        return res
+    }
+
+    public createSection(data: CreateSectionRequest): Promise<AxiosResponse<CreateSectionResponse>> {
+        const res = this.axiosInstance.post(`${api.createSection}`, { ...data })
         return res
     }
 

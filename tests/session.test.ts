@@ -64,3 +64,14 @@ conditionalTest('getMineAllDocumentLabels', async () => {
     const res = await session.getMineAllDocumentLabels()
     expect(res.status).toBe(200)
 })
+
+conditionalTest('createSection', async () => {
+    const session = new Session(urlPrefix!, apiKey!)
+    const res = await session.createSection({
+        title: "test",
+        description: "test",
+        labels: [],
+        public: false
+    })
+    expect(res.status).toBe(200)
+})
