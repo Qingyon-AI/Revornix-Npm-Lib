@@ -26,6 +26,22 @@ pnpm add revornix
 
 ## Usage
 
+### Create Section
+
+```ts
+import { Session } from 'revornix';
+
+const revornixSession = new Session('YOUR_API_PREFIX', 'YOUR_API_KEY');
+const response = await session.createSection({
+    title: "test",
+    description: "test",
+    labels: [],
+    public: false
+})
+
+console.log(response);
+```
+
 ### Create Document Label
 
 ```ts
