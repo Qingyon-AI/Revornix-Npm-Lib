@@ -57,7 +57,7 @@ interface CreateSectionRequest {
     title: string
     description: string
     public: boolean
-    cover_id?: number
+    cover?: string
     labels: number[]
 }
 
