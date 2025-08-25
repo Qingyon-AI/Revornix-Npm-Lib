@@ -26,6 +26,18 @@ pnpm add revornix
 
 ## Usage
 
+### Upload File
+
+```ts
+import { Session } from 'revornix';
+
+const revornixSession = new Session('YOUR_API_PREFIX', 'YOUR_API_KEY');
+const file = fs.createReadStream('/path/to/file');
+const response = await session.uploadFile(file, 'test.txt');
+
+console.log(response);
+```
+
 ### Create Section
 
 ```ts

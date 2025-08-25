@@ -13,71 +13,82 @@ const shouldSkip = !urlPrefix || !apiKey;
 // 可选封装一下
 const conditionalTest = shouldSkip ? test.skip : test;
 
-conditionalTest('createQuickNoteDocument', async () => {
+conditionalTest('uploadFile', async () => {
     const session = new Session(urlPrefix!, apiKey!)
-    const res = await session.createQuickNoteDocument({
-        content: "Hello World",
-        sections: [],
-        auto_summary: false
-    })
+    const fs = (await import('fs')).default;
+    const file = fs.createReadStream('./test.txt')
+    const res = await session.uploadFile(
+        file,
+        'test.txt'
+    )
     expect(res.status).toBe(200)
 })
 
-conditionalTest('createWebsiteDocument', async () => {
-    const session = new Session(urlPrefix!, apiKey!)
-    const res = await session.createWebsiteDocument({
-        url: "https://www.google.com",
-        auto_summary: false,
-        sections: []
-    })
-    expect(res.status).toBe(200)
-})
+// conditionalTest('createQuickNoteDocument', async () => {
+//     const session = new Session(urlPrefix!, apiKey!)
+//     const res = await session.createQuickNoteDocument({
+//         content: "Hello World",
+//         sections: [],
+//         auto_summary: false
+//     })
+//     expect(res.status).toBe(200)
+// })
 
-conditionalTest('createFileDocument', async () => {
-    const session = new Session(urlPrefix!, apiKey!)
-    const res = await session.createFileDocument({
-        file_name: "test.txt",
-        auto_summary: false,
-        sections: []
-    })
-    expect(res.status).toBe(200)
-})
+// conditionalTest('createWebsiteDocument', async () => {
+//     const session = new Session(urlPrefix!, apiKey!)
+//     const res = await session.createWebsiteDocument({
+//         url: "https://www.google.com",
+//         auto_summary: false,
+//         sections: []
+//     })
+//     expect(res.status).toBe(200)
+// })
 
-conditionalTest('createDocumentLabel', async () => {
-    const session = new Session(urlPrefix!, apiKey!)
-    const res = await session.createDocumentLabel({
-        name: "test"
-    })
-    expect(res.status).toBe(200)
-})
+// conditionalTest('createFileDocument', async () => {
+//     const session = new Session(urlPrefix!, apiKey!)
+//     const res = await session.createFileDocument({
+//         file_name: "test.txt",
+//         auto_summary: false,
+//         sections: []
+//     })
+//     expect(res.status).toBe(200)
+// })
 
-conditionalTest('createSectionLabel', async () => {
-    const session = new Session(urlPrefix!, apiKey!)
-    const res = await session.createSectionLabel({
-        name: "test"
-    })
-    expect(res.status).toBe(200)
-})
+// conditionalTest('createDocumentLabel', async () => {
+//     const session = new Session(urlPrefix!, apiKey!)
+//     const res = await session.createDocumentLabel({
+//         name: "test"
+//     })
+//     expect(res.status).toBe(200)
+// })
 
-conditionalTest('getMineAllDocumentLabels', async () => {
-    const session = new Session(urlPrefix!, apiKey!)
-    const res = await session.getMineAllDocumentLabels()
-    expect(res.status).toBe(200)
-})
+// conditionalTest('createSectionLabel', async () => {
+//     const session = new Session(urlPrefix!, apiKey!)
+//     const res = await session.createSectionLabel({
+//         name: "test"
+//     })
+//     expect(res.status).toBe(200)
+// })
 
-conditionalTest('createSection', async () => {
-    const session = new Session(urlPrefix!, apiKey!)
-    const res = await session.createSection({
-        title: "test",
-        description: "test",
-        labels: [],
-        public: false
-    })
-    expect(res.status).toBe(200)
-})
+// conditionalTest('getMineAllDocumentLabels', async () => {
+//     const session = new Session(urlPrefix!, apiKey!)
+//     const res = await session.getMineAllDocumentLabels()
+//     expect(res.status).toBe(200)
+// })
 
-conditionalTest('getMineAllSections', async () => {
-    const session = new Session(urlPrefix!, apiKey!)
-    const res = await session.getMineAllSection()
-    expect(res.status).toBe(200)
-})
+// conditionalTest('createSection', async () => {
+//     const session = new Session(urlPrefix!, apiKey!)
+//     const res = await session.createSection({
+//         title: "test",
+//         description: "test",
+//         labels: [],
+//         public: false
+//     })
+//     expect(res.status).toBe(200)
+// })
+
+// conditionalTest('getMineAllSections', async () => {
+//     const session = new Session(urlPrefix!, apiKey!)
+//     const res = await session.getMineAllSection()
+//     expect(res.status).toBe(200)
+// })

@@ -1,4 +1,5 @@
 import axios, { Axios, AxiosResponse } from "axios";
+import { ReadStream } from "fs";
 import api from "./api";
 
 interface FileDocumentParameters {
@@ -75,6 +76,12 @@ interface AllMySectionsResponse {
     data: BaseSectionInfo[]
 }
 
+interface NormalResponse {
+    success: Boolean
+    message: String
+    code?: number
+}
+
 export class Session {
 
     private apiKey: string;
@@ -88,11 +95,35 @@ export class Session {
         const axiosInstance = axios.create({
             baseURL: this.baseUrl,
             headers: {
-                'Api-Key': `${this.apiKey}`,
-                'Content-Type': 'application/json',
+                'Api-Key': `${this.apiKey}`
             },
         });
         this.axiosInstance = axiosInstance;
+    }
+
+    public async uploadFile(file: File | ReadStream, remoteFilePath: string, contentType?: string): Promise<AxiosResponse<NormalResponse>> {
+        const isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
+        const isNode = typeof process !== 'undefined' && process.release && process.release.name === 'node';
+        if (isNode) {
+            let browserFile = file as File;
+            const FormData = (await import('form-data')).default;
+            const formData = new FormData();
+            formData.append('file', browserFile);
+            formData.append('file_path', remoteFilePath);
+            formData.append('content_type', contentType);
+            const response = await this.axiosInstance.post(`${api.uploadFile}`, formData);
+            return response
+        }
+        if (isBrowser) {
+            let nodeJsFile = file as File;
+            const formData = new FormData();
+            formData.append('file', nodeJsFile);
+            formData.append('file_path', remoteFilePath);
+            formData.append('content_type', contentType || nodeJsFile.type || 'application/octet-stream');
+            const response = await this.axiosInstance.post('/file/upload', formData);
+            return response
+        }
+        throw new Error("Unsupported environment")
     }
 
     public async createFileDocument(data: FileDocumentParameters): Promise<AxiosResponse<DocumentCreateResponse>> {

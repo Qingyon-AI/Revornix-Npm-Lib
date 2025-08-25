@@ -5,4 +5,5 @@ export default {
     createSesionLabel: "/tp/section/label/create",
     createSection: "/tp/section/create",
     getMineAllSection: "/tp/section/mine/all",
+    uploadFile: "/tp/file/upload"
 }
